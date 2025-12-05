@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -20,11 +20,9 @@
     --radius-lg: 1rem;
   }
 
-
   * {
     box-sizing: border-box;
   }
-
 
   body {
     margin: 0;
@@ -38,7 +36,6 @@
     align-items: stretch;
     padding: 1.5rem 1rem;
   }
-
 
   .app {
     width: 100%;
@@ -58,13 +55,11 @@
     box-shadow: 0 14px 35px rgba(15, 23, 42, 0.1);
   }
 
-
   @media (max-width: 900px) {
     .app {
       grid-template-columns: minmax(0, 1fr);
     }
   }
-
 
   .panel {
     background: radial-gradient(circle at top left, #e0f2fe, #ffffff);
@@ -74,7 +69,6 @@
     position: relative;
     overflow: hidden;
   }
-
 
   .panel::before {
     content: "";
@@ -89,7 +83,6 @@
     pointer-events: none;
   }
 
-
   .panel-header {
     display: flex;
     justify-content: space-between;
@@ -98,7 +91,6 @@
     position: relative;
     z-index: 1;
   }
-
 
   .title-main {
     font-size: 1.15rem;
@@ -110,12 +102,10 @@
     color: #111827;
   }
 
-
   .title-sub {
     font-size: 0.75rem;
     color: var(--muted);
   }
-
 
   .pill {
     font-size: 0.7rem;
@@ -127,7 +117,6 @@
     background: #eef2ff;
     color: #4f46e5;
   }
-
 
   .badge {
     display: inline-flex;
@@ -141,7 +130,6 @@
     background: #dbeafe;
   }
 
-
   .field {
     display: flex;
     flex-direction: column;
@@ -152,12 +140,10 @@
     margin-bottom: 0.8rem;
   }
 
-
   label {
     font-size: 0.8rem;
     color: #4b5563;
   }
-
 
   select,
   input[type="text"],
@@ -173,7 +159,6 @@
       background 0.15s ease;
   }
 
-
   select:focus,
   input:focus,
   textarea:focus {
@@ -182,12 +167,10 @@
     background: #eff6ff;
   }
 
-
   .hint {
     font-size: 0.75rem;
     color: var(--muted);
   }
-
 
   .radio-group {
     display: flex;
@@ -195,7 +178,6 @@
     flex-wrap: wrap;
     margin-top: 0.25rem;
   }
-
 
   .radio-option {
     display: inline-flex;
@@ -210,11 +192,9 @@
     user-select: none;
   }
 
-
   .radio-option input {
     accent-color: var(--accent);
   }
-
 
   .btn-row {
     display: flex;
@@ -224,7 +204,6 @@
     position: relative;
     z-index: 1;
   }
-
 
   button {
     border: none;
@@ -241,12 +220,10 @@
     white-space: nowrap;
   }
 
-
   button:active {
     transform: translateY(1px) scale(0.99);
     box-shadow: none;
   }
-
 
   .btn-primary {
     background: linear-gradient(135deg, #2563eb, #22c55e);
@@ -254,14 +231,12 @@
     box-shadow: 0 10px 24px rgba(59, 130, 246, 0.35);
   }
 
-
   .btn-secondary {
     background: #ffffff;
     color: #1f2937;
     border: 1px solid #c4b5fd;
     box-shadow: 0 3px 10px rgba(15, 23, 42, 0.06);
   }
-
 
   .btn-ghost {
     background: transparent;
@@ -271,16 +246,13 @@
     padding: 0.35rem 0.8rem;
   }
 
-
   .btn-secondary:hover {
     background: #eef2ff;
   }
 
-
   .btn-primary:hover {
     filter: brightness(1.05);
   }
-
 
   .divider {
     height: 1px;
@@ -295,7 +267,6 @@
     z-index: 1;
   }
 
-
   .dialog-container {
     position: relative;
     z-index: 1;
@@ -303,7 +274,6 @@
     display: flex;
     flex-direction: column;
   }
-
 
   .topic-banner {
     border-radius: 0.9rem;
@@ -314,12 +284,10 @@
     margin-bottom: 0.75rem;
   }
 
-
   .topic-label {
     font-size: 0.75rem;
     color: var(--muted);
   }
-
 
   .topic-text {
     font-size: 0.9rem;
@@ -327,7 +295,6 @@
     margin-top: 0.15rem;
     color: #111827;
   }
-
 
   .role-summary {
     display: flex;
@@ -337,7 +304,6 @@
     margin-bottom: 0.75rem;
   }
 
-
   .chip {
     padding: 0.22rem 0.7rem;
     border-radius: 999px;
@@ -346,13 +312,11 @@
     color: #4338ca;
   }
 
-
   .chip-app {
     border-color: #38bdf8;
     background: #e0f2fe;
     color: #0369a1;
   }
-
 
   .chip-student {
     border-color: #4ade80;
@@ -360,20 +324,17 @@
     color: #166534;
   }
 
-
   .chip-side-favor {
     border-color: #22c55e;
     background: #bbf7d0;
     color: #166534;
   }
 
-
   .chip-side-contra {
     border-color: #f97316;
     background: #ffedd5;
     color: #9a3412;
   }
-
 
   .step-indicator {
     font-size: 0.8rem;
@@ -384,11 +345,9 @@
     margin-bottom: 0.5rem;
   }
 
-
   .step-indicator strong {
     color: #111827;
   }
-
 
   .bubble {
     border-radius: var(--radius-lg);
@@ -407,7 +366,6 @@
     overflow: hidden;
   }
 
-
   .bubble::before {
     content: "";
     position: absolute;
@@ -421,7 +379,6 @@
     pointer-events: none;
   }
 
-
   .bubble-title {
     font-size: 0.8rem;
     text-transform: uppercase;
@@ -430,13 +387,11 @@
     margin-bottom: 0.25rem;
   }
 
-
   .bubble-main {
     position: relative;
     z-index: 1;
     color: #111827;
   }
-
 
   .prompt-student {
     border-radius: var(--radius-lg);
@@ -448,11 +403,9 @@
     color: #854d0e;
   }
 
-
   .prompt-student strong {
     color: var(--success);
   }
-
 
   .controls-dialog {
     display: flex;
@@ -462,7 +415,6 @@
     margin-bottom: 0.4rem;
   }
 
-
   .status-line {
     font-size: 0.75rem;
     color: var(--muted);
@@ -470,7 +422,6 @@
     justify-content: space-between;
     align-items: center;
   }
-
 
   .status-pill {
     padding: 0.18rem 0.7rem;
@@ -480,13 +431,11 @@
     color: #4338ca;
   }
 
-
   .status-pill.app {
     border-color: #38bdf8;
     background: #e0f2fe;
     color: #0369a1;
   }
-
 
   .status-pill.student {
     border-color: #4ade80;
@@ -494,19 +443,16 @@
     color: #166534;
   }
 
-
   .status-pill.end {
     border-color: #f97316;
     background: #ffedd5;
     color: #9a3412;
   }
 
-
   .notes {
     margin-top: 0.7rem;
     font-size: 0.8rem;
   }
-
 
   .notes textarea {
     width: 100%;
@@ -518,13 +464,11 @@
     border: 1px solid #e5e7eb;
   }
 
-
   .notes textarea:focus {
     border-color: #a5b4fc;
     box-shadow: 0 0 0 1px rgba(129, 140, 248, 0.5);
     background: #f9fafb;
   }
-
 
   .error {
     margin-top: 0.5rem;
@@ -551,7 +495,6 @@
         <span class="pill">Configurar</span>
       </div>
 
-
       <div class="field">
         <label for="studentName">Nombre del alumno (opcional)</label>
         <input
@@ -560,7 +503,6 @@
           placeholder="Escribe el nombre o deja en blanco"
         />
       </div>
-
 
       <div class="field">
         <label for="topicSelect">Tema del debate</label>
@@ -576,20 +518,15 @@
           </option>
         </select>
         <div class="hint">
-          Puedes añadir un tema propio con el botón correspondiente.
+          Elige uno de los temas disponibles o usa el botón de tema aleatorio.
         </div>
       </div>
 
-
       <div class="btn-row">
-        <button class="btn-ghost" id="addCustomTopicBtn" type="button">
-          ➕ Añadir tema personalizado
-        </button>
         <button class="btn-ghost" id="randomTopicBtn" type="button">
           🎲 Tema aleatorio
         </button>
       </div>
-
 
       <div class="field" style="margin-top: 0.8rem;">
         <label>¿Qué postura defenderá el alumno?</label>
@@ -613,7 +550,6 @@
         </div>
       </div>
 
-
       <div class="field">
         <label for="difficultySelect">Nivel de exigencia argumentativa</label>
         <select id="difficultySelect">
@@ -626,9 +562,7 @@
         </div>
       </div>
 
-
       <div class="divider"></div>
-
 
       <div class="btn-row">
         <button class="btn-primary" id="startDebateBtn" type="button">
@@ -639,10 +573,8 @@
         </button>
       </div>
 
-
       <div id="configError" class="error" style="display:none;"></div>
     </section>
-
 
     <!-- Panel derecho: diálogo de debate -->
     <section class="panel" aria-label="Debate con la aplicación">
@@ -656,7 +588,6 @@
         <span class="pill">En acción</span>
       </div>
 
-
       <div class="dialog-container">
         <div class="topic-banner">
           <div class="topic-label">Tema del debate</div>
@@ -665,17 +596,14 @@
           </div>
         </div>
 
-
         <div class="role-summary" id="roleSummary">
           <!-- Se rellenará dinámicamente -->
         </div>
-
 
         <div class="step-indicator">
           <div>Fase: <strong id="stepLabel">—</strong></div>
           <div>Turno <span id="turnIndex">0</span> de <span id="turnTotal">0</span></div>
         </div>
-
 
         <div id="bubbleApp" class="bubble" style="display:none;">
           <div class="bubble-title" id="bubbleTitle">Argumento de la aplicación</div>
@@ -684,14 +612,12 @@
           </div>
         </div>
 
-
         <div id="promptStudent" class="prompt-student" style="display:none;">
           <strong>Tu turno:</strong> 
           <span id="promptStudentText">
             Responde en voz alta al argumento de la aplicación. Cuando hayas terminado, pulsa el botón para continuar.
           </span>
         </div>
-
 
         <div class="controls-dialog">
           <button class="btn-primary" id="nextStepBtn" type="button" disabled>
@@ -702,12 +628,10 @@
           </button>
         </div>
 
-
         <div class="status-line">
           <span class="status-pill" id="statusPill">Sin iniciar</span>
           <span id="statusDetail">Configura los parámetros y pulsa “Empezar”.</span>
         </div>
-
 
         <div class="notes">
           <label for="notesArea">Notas del profesor o del propio alumno:</label>
@@ -720,7 +644,6 @@
     </section>
   </div>
 
-
   <script>
     // --- Datos de temas y argumentos de la app ---
     // Estructura: topicKey -> side ("favor"/"contra") -> { intro, ref1, ref2, cierre }
@@ -732,7 +655,6 @@
       tareas:
         "Crear una asignatura escolar para aprender tareas cotidianas."
     };
-
 
     const ARGUMENTS_BASE = {
       recreo: {
@@ -803,7 +725,6 @@
       }
     };
 
-
     // --- Estado de la práctica ---
     const state = {
       topicKey: null,
@@ -811,21 +732,17 @@
       appSide: "contra",
       difficulty: "medio",
       currentStep: 0,   // 0 = sin iniciar
-      totalSteps: 6,    // 1: intro app, 2: alumno, 3: ref1, 4: alumno, 5: ref2, 6: cierre
-      customTopic: null
+      totalSteps: 6     // 1: intro app, 2: alumno, 3: ref1, 4: alumno, 5: ref2, 6: cierre
     };
-
 
     // --- Referencias DOM ---
     const studentNameInput = document.getElementById("studentName");
     const topicSelect = document.getElementById("topicSelect");
-    const addCustomTopicBtn = document.getElementById("addCustomTopicBtn");
     const randomTopicBtn = document.getElementById("randomTopicBtn");
     const difficultySelect = document.getElementById("difficultySelect");
     const startDebateBtn = document.getElementById("startDebateBtn");
     const resetConfigBtn = document.getElementById("resetConfigBtn");
     const configError = document.getElementById("configError");
-
 
     const topicTextEl = document.getElementById("topicText");
     const roleSummaryEl = document.getElementById("roleSummary");
@@ -842,30 +759,24 @@
     const statusPill = document.getElementById("statusPill");
     const statusDetail = document.getElementById("statusDetail");
 
-
     // --- Utilidades ---
     function getStudentSide() {
       const checked = document.querySelector('input[name="studentSide"]:checked');
       return checked ? checked.value : "favor";
     }
 
-
     function updateAppSide() {
       state.studentSide = getStudentSide();
       state.appSide = state.studentSide === "favor" ? "contra" : "favor";
     }
 
-
     function updateTopicText() {
-      if (state.customTopic) {
-        topicTextEl.textContent = state.customTopic;
-      } else if (TOPICS_TEXT[state.topicKey]) {
+      if (TOPICS_TEXT[state.topicKey]) {
         topicTextEl.textContent = TOPICS_TEXT[state.topicKey];
       } else {
-        topicTextEl.textContent = "Selecciona o crea un tema para comenzar.";
+        topicTextEl.textContent = "Selecciona un tema para comenzar.";
       }
     }
-
 
     function setStatus(text, mode) {
       statusPill.textContent = text;
@@ -875,7 +786,6 @@
       if (mode === "end") statusPill.classList.add("end");
     }
 
-
     function buildRoleSummary() {
       roleSummaryEl.innerHTML = "";
       const studentName = studentNameInput.value.trim() || "Alumno/a";
@@ -884,16 +794,13 @@
       const appSideText =
         state.appSide === "favor" ? "A favor del tema" : "En contra del tema";
 
-
       const chipStudent = document.createElement("span");
       chipStudent.className = "chip chip-student";
       chipStudent.textContent = `${studentName} (${studentSideText})`;
 
-
       const chipApp = document.createElement("span");
       chipApp.className = "chip chip-app";
       chipApp.textContent = `Aplicación (${appSideText})`;
-
 
       const chipSideStudent = document.createElement("span");
       chipSideStudent.className =
@@ -901,20 +808,17 @@
       chipSideStudent.textContent =
         state.studentSide === "favor" ? "Alumno: A favor" : "Alumno: En contra";
 
-
       const chipSideApp = document.createElement("span");
       chipSideApp.className =
         "chip " + (state.appSide === "favor" ? "chip-side-favor" : "chip-side-contra");
       chipSideApp.textContent =
         state.appSide === "favor" ? "App: A favor" : "App: En contra";
 
-
       roleSummaryEl.appendChild(chipStudent);
       roleSummaryEl.appendChild(chipApp);
       roleSummaryEl.appendChild(chipSideStudent);
       roleSummaryEl.appendChild(chipSideApp);
     }
-
 
     // Ajuste de longitud según dificultad (recorte simple)
     function adaptDifficulty(text, difficulty) {
@@ -930,17 +834,14 @@
       return text;
     }
 
-
     function getAppArgument(stepNumber) {
       const topicKey = state.topicKey;
       const side = state.appSide; // favor o contra
       const diff = state.difficulty;
 
-
       if (!ARGUMENTS_BASE[topicKey] || !ARGUMENTS_BASE[topicKey][side]) {
         return "No se han encontrado argumentos para este tema.";
       }
-
 
       let rawText = "";
       if (stepNumber === 1) rawText = ARGUMENTS_BASE[topicKey][side].intro;
@@ -948,10 +849,8 @@
       if (stepNumber === 5) rawText = ARGUMENTS_BASE[topicKey][side].ref2;
       if (stepNumber === 6) rawText = ARGUMENTS_BASE[topicKey][side].cierre;
 
-
       return adaptDifficulty(rawText, diff);
     }
-
 
     function getStepLabel(stepNumber) {
       switch (stepNumber) {
@@ -965,13 +864,11 @@
       }
     }
 
-
     function updateViewForStep() {
       const step = state.currentStep;
       turnIndexEl.textContent = step;
       turnTotalEl.textContent = state.totalSteps;
       stepLabelEl.textContent = getStepLabel(step);
-
 
       if (step === 0) {
         bubbleApp.style.display = "none";
@@ -984,7 +881,6 @@
         return;
       }
 
-
       // Paso de la app
       if ([1, 3, 5, 6].includes(step)) {
         const titleMap = {
@@ -996,7 +892,6 @@
         bubbleTitle.textContent = titleMap[step] || "Argumento de la aplicación";
         bubbleText.textContent = getAppArgument(step);
         bubbleApp.style.display = "block";
-
 
         if (step === 6) {
           // Cierre
@@ -1020,7 +915,6 @@
         }
       }
 
-
       // Paso del alumno
       if ([2, 4].includes(step)) {
         bubbleApp.style.display = "none";
@@ -1029,13 +923,11 @@
           step === 2 ? "Primera respuesta del alumno" : "Segunda respuesta del alumno";
         stepLabelEl.textContent = label;
 
-
         const instruction =
           step === 2
             ? "Responde a la introducción de la aplicación: presenta tus ideas principales y critica, si es posible, algún punto débil del argumento que has escuchado."
             : "Responde a la refutación: defiende de nuevo tu postura, aporta ejemplos nuevos o reformula tus ideas para que resulten más convincentes.";
         promptStudentText.textContent = instruction;
-
 
         nextStepBtn.textContent = "▶️ He respondido, ver argumento de la app";
         nextStepBtn.disabled = false;
@@ -1046,11 +938,9 @@
       }
     }
 
-
     // --- Gestión de pasos ---
     nextStepBtn.addEventListener("click", () => {
       if (state.currentStep === 0) return;
-
 
       if (state.currentStep >= state.totalSteps) {
         // Práctica finalizada
@@ -1061,14 +951,12 @@
         return;
       }
 
-
       state.currentStep += 1;
       updateViewForStep();
     });
 
-
     restartDebateBtn.addEventListener("click", () => {
-      if (!state.topicKey && !state.customTopic) return;
+      if (!state.topicKey) return;
       state.currentStep = 1;
       updateViewForStep();
       setStatus("Reinicio del debate", "app");
@@ -1076,12 +964,10 @@
         "Has reiniciado la práctica con el mismo tema y la misma postura. Vuelve a escuchar a la app y responde de nuevo.";
     });
 
-
     // --- Configuración y arranque ---
     startDebateBtn.addEventListener("click", () => {
       configError.style.display = "none";
       configError.textContent = "";
-
 
       try {
         state.topicKey = topicSelect.value || "recreo";
@@ -1090,15 +976,12 @@
         state.totalSteps = 6;
         state.currentStep = 1;
 
-
         updateTopicText();
         buildRoleSummary();
         updateViewForStep();
 
-
         nextStepBtn.disabled = false;
         restartDebateBtn.disabled = false;
-
 
         setStatus("Turno de la app", "app");
         statusDetail.textContent =
@@ -1109,33 +992,6 @@
       }
     });
 
-
-    // Añadir tema personalizado
-    addCustomTopicBtn.addEventListener("click", () => {
-      const newTopic = prompt(
-        "Escribe el nuevo tema del debate (frase completa):"
-      );
-      if (!newTopic || !newTopic.trim()) return;
-
-
-      const trimmed = newTopic.trim();
-      const customKey = "custom_" + Date.now();
-
-
-      TOPICS_TEXT[customKey] = trimmed;
-      const option = document.createElement("option");
-      option.value = customKey;
-      option.textContent = trimmed;
-      topicSelect.appendChild(option);
-
-
-      topicSelect.value = customKey;
-      state.topicKey = customKey;
-      state.customTopic = trimmed;
-      updateTopicText();
-    });
-
-
     // Tema aleatorio
     randomTopicBtn.addEventListener("click", () => {
       const options = Array.from(topicSelect.options);
@@ -1143,10 +999,8 @@
       const idx = Math.floor(Math.random() * options.length);
       topicSelect.selectedIndex = idx;
       state.topicKey = topicSelect.value;
-      state.customTopic = null;
       updateTopicText();
     });
-
 
     // Cambio de postura/dificultad actualiza estado (por si reinicias)
     Array.from(document.querySelectorAll('input[name="studentSide"]')).forEach(
@@ -1158,7 +1012,6 @@
       }
     );
 
-
     difficultySelect.addEventListener("change", () => {
       state.difficulty = difficultySelect.value || "medio";
       if (state.currentStep > 0) {
@@ -1166,13 +1019,11 @@
       }
     });
 
-
     // Reset total
     resetConfigBtn.addEventListener("click", () => {
       studentNameInput.value = "";
       topicSelect.value = "recreo";
       state.topicKey = "recreo";
-      state.customTopic = null;
       updateAppSide();
       difficultySelect.value = "medio";
       state.difficulty = "medio";
@@ -1189,7 +1040,6 @@
       configError.textContent = "";
     });
 
-
     // Estado inicial
     state.topicKey = topicSelect.value || "recreo";
     updateAppSide();
@@ -1198,3 +1048,5 @@
   </script>
 </body>
 </html>
+
+
