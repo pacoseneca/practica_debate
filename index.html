@@ -1,0 +1,1200 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Práctica de Debate – Oratoria y Debate</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+  :root {
+    --bg: #f5f5ff;
+    --bg-soft: #e0f2fe;
+    --card: #ffffff;
+    --accent: #2563eb;
+    --accent-soft: rgba(37, 99, 235, 0.12);
+    --text: #0f172a;
+    --muted: #6b7280;
+    --border: #d0d7ff;
+    --success: #16a34a;
+    --danger: #f97316;
+    --radius-xl: 1.4rem;
+    --radius-lg: 1rem;
+  }
+
+
+  * {
+    box-sizing: border-box;
+  }
+
+
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top, #bfdbfe, #e0f2fe 55%);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    padding: 1.5rem 1rem;
+  }
+
+
+  .app {
+    width: 100%;
+    max-width: 1100px;
+    background: linear-gradient(
+      145deg,
+      #ffffff 0%,
+      #f9fafb 40%,
+      #eff6ff 100%
+    );
+    border-radius: 1.6rem;
+    padding: 1.6rem;
+    border: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.9fr);
+    gap: 1.4rem;
+    box-shadow: 0 14px 35px rgba(15, 23, 42, 0.1);
+  }
+
+
+  @media (max-width: 900px) {
+    .app {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+
+  .panel {
+    background: radial-gradient(circle at top left, #e0f2fe, #ffffff);
+    border-radius: var(--radius-xl);
+    padding: 1.2rem 1.4rem;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+
+  .panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at top right,
+      rgba(129, 140, 248, 0.18),
+      transparent 60%
+    );
+    opacity: 0.9;
+    pointer-events: none;
+  }
+
+
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+
+  .title-main {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    color: #111827;
+  }
+
+
+  .title-sub {
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+
+  .pill {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(129, 140, 248, 0.7);
+    background: #eef2ff;
+    color: #4f46e5;
+  }
+
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.7rem;
+    padding: 0.22rem 0.55rem;
+    border-radius: 999px;
+    border: 1px solid rgba(37, 99, 235, 0.6);
+    color: var(--accent);
+    background: #dbeafe;
+  }
+
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.85rem;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0.8rem;
+  }
+
+
+  label {
+    font-size: 0.8rem;
+    color: #4b5563;
+  }
+
+
+  select,
+  input[type="text"],
+  textarea {
+    background: #ffffff;
+    border-radius: 0.7rem;
+    border: 1px solid #c7d2fe;
+    padding: 0.45rem 0.6rem;
+    color: #111827;
+    font-size: 0.85rem;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease,
+      background 0.15s ease;
+  }
+
+
+  select:focus,
+  input:focus,
+  textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.5);
+    background: #eff6ff;
+  }
+
+
+  .hint {
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+
+  .radio-group {
+    display: flex;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+    margin-top: 0.25rem;
+  }
+
+
+  .radio-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid #c4b5fd;
+    cursor: pointer;
+    background: #f5f3ff;
+    font-size: 0.78rem;
+    user-select: none;
+  }
+
+
+  .radio-option input {
+    accent-color: var(--accent);
+  }
+
+
+  .btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 0.2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+
+  button {
+    border: none;
+    border-radius: 999px;
+    padding: 0.5rem 1.1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: transform 0.08s ease, box-shadow 0.12s ease,
+      background 0.15s ease, translate 0.08s ease;
+    white-space: nowrap;
+  }
+
+
+  button:active {
+    transform: translateY(1px) scale(0.99);
+    box-shadow: none;
+  }
+
+
+  .btn-primary {
+    background: linear-gradient(135deg, #2563eb, #22c55e);
+    color: #f9fafb;
+    box-shadow: 0 10px 24px rgba(59, 130, 246, 0.35);
+  }
+
+
+  .btn-secondary {
+    background: #ffffff;
+    color: #1f2937;
+    border: 1px solid #c4b5fd;
+    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.06);
+  }
+
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--muted);
+    border: 1px dashed #c7d2fe;
+    font-size: 0.78rem;
+    padding: 0.35rem 0.8rem;
+  }
+
+
+  .btn-secondary:hover {
+    background: #eef2ff;
+  }
+
+
+  .btn-primary:hover {
+    filter: brightness(1.05);
+  }
+
+
+  .divider {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(148, 163, 184, 0.9),
+      transparent
+    );
+    margin: 0.9rem 0 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+
+  .dialog-container {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .topic-banner {
+    border-radius: 0.9rem;
+    padding: 0.6rem 0.75rem;
+    background: #eff6ff;
+    border: 1px dashed #bfdbfe;
+    font-size: 0.8rem;
+    margin-bottom: 0.75rem;
+  }
+
+
+  .topic-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+
+  .topic-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 0.15rem;
+    color: #111827;
+  }
+
+
+  .role-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    margin-bottom: 0.75rem;
+  }
+
+
+  .chip {
+    padding: 0.22rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid #c7d2fe;
+    background: #eef2ff;
+    color: #4338ca;
+  }
+
+
+  .chip-app {
+    border-color: #38bdf8;
+    background: #e0f2fe;
+    color: #0369a1;
+  }
+
+
+  .chip-student {
+    border-color: #4ade80;
+    background: #dcfce7;
+    color: #166534;
+  }
+
+
+  .chip-side-favor {
+    border-color: #22c55e;
+    background: #bbf7d0;
+    color: #166534;
+  }
+
+
+  .chip-side-contra {
+    border-color: #f97316;
+    background: #ffedd5;
+    color: #9a3412;
+  }
+
+
+  .step-indicator {
+    font-size: 0.8rem;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+
+  .step-indicator strong {
+    color: #111827;
+  }
+
+
+  .bubble {
+    border-radius: var(--radius-lg);
+    padding: 0.85rem 1rem;
+    background: radial-gradient(
+      circle at top left,
+      rgba(129, 140, 248, 0.25),
+      #ffffff
+    );
+    border: 1px solid #c4b5fd;
+    box-shadow: 0 12px 26px rgba(148, 163, 184, 0.35);
+    font-size: 0.9rem;
+    line-height: 1.45;
+    margin-bottom: 0.7rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+
+  .bubble::before {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background-image: radial-gradient(
+      circle at 0% 0%,
+      rgba(59, 130, 246, 0.18),
+      transparent 72%
+    );
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+
+  .bubble-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: #4f46e5;
+    margin-bottom: 0.25rem;
+  }
+
+
+  .bubble-main {
+    position: relative;
+    z-index: 1;
+    color: #111827;
+  }
+
+
+  .prompt-student {
+    border-radius: var(--radius-lg);
+    padding: 0.75rem 0.9rem;
+    background: #fefce8;
+    border: 1px dashed #facc15;
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
+    color: #854d0e;
+  }
+
+
+  .prompt-student strong {
+    color: var(--success);
+  }
+
+
+  .controls-dialog {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+  }
+
+
+  .status-line {
+    font-size: 0.75rem;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+
+  .status-pill {
+    padding: 0.18rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid #c7d2fe;
+    background: #eef2ff;
+    color: #4338ca;
+  }
+
+
+  .status-pill.app {
+    border-color: #38bdf8;
+    background: #e0f2fe;
+    color: #0369a1;
+  }
+
+
+  .status-pill.student {
+    border-color: #4ade80;
+    background: #dcfce7;
+    color: #166534;
+  }
+
+
+  .status-pill.end {
+    border-color: #f97316;
+    background: #ffedd5;
+    color: #9a3412;
+  }
+
+
+  .notes {
+    margin-top: 0.7rem;
+    font-size: 0.8rem;
+  }
+
+
+  .notes textarea {
+    width: 100%;
+    min-height: 4rem;
+    resize: vertical;
+    font-size: 0.8rem;
+    background: #ffffff;
+    border-radius: 0.7rem;
+    border: 1px solid #e5e7eb;
+  }
+
+
+  .notes textarea:focus {
+    border-color: #a5b4fc;
+    box-shadow: 0 0 0 1px rgba(129, 140, 248, 0.5);
+    background: #f9fafb;
+  }
+
+
+  .error {
+    margin-top: 0.5rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: 0.7rem;
+    background: #fee2e2;
+    border: 1px solid #fca5a5;
+    color: #b91c1c;
+    font-size: 0.78rem;
+  }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <!-- Panel izquierdo: configuración -->
+    <section class="panel" aria-label="Configuración del debate">
+      <div class="panel-header">
+        <div class="title-main">
+          Práctica guiada de debate
+          <span class="title-sub">
+            La aplicación adopta la postura contraria al alumno.
+          </span>
+        </div>
+        <span class="pill">Configurar</span>
+      </div>
+
+
+      <div class="field">
+        <label for="studentName">Nombre del alumno (opcional)</label>
+        <input
+          type="text"
+          id="studentName"
+          placeholder="Escribe el nombre o deja en blanco"
+        />
+      </div>
+
+
+      <div class="field">
+        <label for="topicSelect">Tema del debate</label>
+        <select id="topicSelect">
+          <option value="recreo">
+            Salir al recreo diez minutos más tarde, pero que sea más largo
+          </option>
+          <option value="robots">
+            Robots participando en competiciones deportivas humanas
+          </option>
+          <option value="tareas">
+            Crear una asignatura para aprender tareas cotidianas
+          </option>
+        </select>
+        <div class="hint">
+          Puedes añadir un tema propio con el botón correspondiente.
+        </div>
+      </div>
+
+
+      <div class="btn-row">
+        <button class="btn-ghost" id="addCustomTopicBtn" type="button">
+          ➕ Añadir tema personalizado
+        </button>
+        <button class="btn-ghost" id="randomTopicBtn" type="button">
+          🎲 Tema aleatorio
+        </button>
+      </div>
+
+
+      <div class="field" style="margin-top: 0.8rem;">
+        <label>¿Qué postura defenderá el alumno?</label>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input
+              type="radio"
+              name="studentSide"
+              value="favor"
+              checked
+            />
+            A favor del tema
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="studentSide" value="contra" />
+            En contra del tema
+          </label>
+        </div>
+        <div class="hint">
+          La aplicación defenderá automáticamente la postura contraria.
+        </div>
+      </div>
+
+
+      <div class="field">
+        <label for="difficultySelect">Nivel de exigencia argumentativa</label>
+        <select id="difficultySelect">
+          <option value="facil">Fácil (ideas claras y sencillas)</option>
+          <option value="medio" selected>Medio (2–3 ideas por intervención)</option>
+          <option value="avanzado">Avanzado (argumentos más densos)</option>
+        </select>
+        <div class="hint">
+          Puedes variar el nivel para adaptar la dificultad al grupo.
+        </div>
+      </div>
+
+
+      <div class="divider"></div>
+
+
+      <div class="btn-row">
+        <button class="btn-primary" id="startDebateBtn" type="button">
+          ▶️ Empezar práctica de debate
+        </button>
+        <button class="btn-secondary" id="resetConfigBtn" type="button">
+          🔄 Resetear todo
+        </button>
+      </div>
+
+
+      <div id="configError" class="error" style="display:none;"></div>
+    </section>
+
+
+    <!-- Panel derecho: diálogo de debate -->
+    <section class="panel" aria-label="Debate con la aplicación">
+      <div class="panel-header">
+        <div class="title-main">
+          Diálogo de práctica
+          <span class="title-sub">
+            Lee el argumento de la app, responde en voz alta y pulsa “He respondido”.
+          </span>
+        </div>
+        <span class="pill">En acción</span>
+      </div>
+
+
+      <div class="dialog-container">
+        <div class="topic-banner">
+          <div class="topic-label">Tema del debate</div>
+          <div class="topic-text" id="topicText">
+            Configura el tema y pulsa “Empezar práctica de debate”.
+          </div>
+        </div>
+
+
+        <div class="role-summary" id="roleSummary">
+          <!-- Se rellenará dinámicamente -->
+        </div>
+
+
+        <div class="step-indicator">
+          <div>Fase: <strong id="stepLabel">—</strong></div>
+          <div>Turno <span id="turnIndex">0</span> de <span id="turnTotal">0</span></div>
+        </div>
+
+
+        <div id="bubbleApp" class="bubble" style="display:none;">
+          <div class="bubble-title" id="bubbleTitle">Argumento de la aplicación</div>
+          <div class="bubble-main" id="bubbleText">
+            <!-- Texto del argumento -->
+          </div>
+        </div>
+
+
+        <div id="promptStudent" class="prompt-student" style="display:none;">
+          <strong>Tu turno:</strong> 
+          <span id="promptStudentText">
+            Responde en voz alta al argumento de la aplicación. Cuando hayas terminado, pulsa el botón para continuar.
+          </span>
+        </div>
+
+
+        <div class="controls-dialog">
+          <button class="btn-primary" id="nextStepBtn" type="button" disabled>
+            ▶️ Siguiente paso
+          </button>
+          <button class="btn-secondary" id="restartDebateBtn" type="button" disabled>
+            🔁 Repetir este debate
+          </button>
+        </div>
+
+
+        <div class="status-line">
+          <span class="status-pill" id="statusPill">Sin iniciar</span>
+          <span id="statusDetail">Configura los parámetros y pulsa “Empezar”.</span>
+        </div>
+
+
+        <div class="notes">
+          <label for="notesArea">Notas del profesor o del propio alumno:</label>
+          <textarea
+            id="notesArea"
+            placeholder="Por ejemplo: ¿ha respondido directamente al argumento?, ¿ha usado ejemplos?, ¿ha mirado al público?, ¿ha sido claro al concluir?"
+          ></textarea>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <script>
+    // --- Datos de temas y argumentos de la app ---
+    // Estructura: topicKey -> side ("favor"/"contra") -> { intro, ref1, ref2, cierre }
+    const TOPICS_TEXT = {
+      recreo:
+        "Salir al recreo diez minutos más tarde, pero que sea más largo.",
+      robots:
+        "Permitir robots participando en competiciones deportivas humanas.",
+      tareas:
+        "Crear una asignatura escolar para aprender tareas cotidianas."
+    };
+
+
+    const ARGUMENTS_BASE = {
+      recreo: {
+        favor: {
+          intro:
+            "Defenderé que retrasar el recreo unos minutos, pero hacerlo más largo, es positivo. Un recreo más extenso permite que el alumnado desconecte de verdad, reduzca el estrés y retome las clases con mayor concentración. Además, se favorecen las relaciones sociales con más calma, sin la sensación de ir contra reloj.",
+          ref1:
+            "Has mencionado problemas de organización, pero muchas escuelas han reorganizado sus horarios con éxito. Si el recreo es de mayor calidad, puede compensar con creces esos ajustes. Un alumnado más descansado suele interrumpir menos y aprovechar mejor el tiempo en el aula, lo que, a la larga, puede incluso mejorar el rendimiento.",
+          ref2:
+            "También se podría pensar que un recreo más largo genera más conflictos, pero disponer de más tiempo ayuda a que las discusiones no se vean cortadas de golpe y se puedan resolver con más serenidad. Y, si el centro establece normas claras de convivencia, ese tiempo extra se convierte en una oportunidad para aprender a gestionar los conflictos.",
+          cierre:
+            "En resumen, un recreo un poco más tarde pero claramente más largo no es un simple capricho: es una inversión en bienestar emocional, convivencia y calidad del aprendizaje. Un alumnado que descansa de forma suficiente suele ser un alumnado que aprende mejor."
+        },
+        contra: {
+          intro:
+            "Defenderé que retrasar el recreo diez minutos no compensa, aunque parezca que hacerlo más largo es una ventaja. El horario escolar es una pieza delicada: cualquier cambio afecta a entradas, salidas, rutas de transporte y organización familiar. No es un detalle menor mover bloques de tiempo.",
+          ref1:
+            "Has insistido en el descanso, pero el problema no siempre es la duración del recreo, sino cómo se utilizan esos minutos. Un recreo más largo no garantiza mejor descanso si el patio es ruidoso, está masificado o carece de zonas tranquilas. Mejoraría más el bienestar cuidando esos elementos que alargando el tiempo.",
+          ref2:
+            "Además, retrasar el recreo puede hacer que alumnado y profesorado lleguen a esa pausa más cansados y con peor ánimo. Esa acumulación de fatiga puede generar más conflictos y menos tolerancia. A veces, una pausa algo más breve pero mejor situada en el horario evita el “bajón” general.",
+          cierre:
+            "En conclusión, alargar el recreo a costa de retrasarlo puede generar más problemas de organización y de fatiga de los que resuelve. Es más sensato optimizar la calidad del recreo actual que modificar toda la estructura de la mañana por unos minutos extra."
+        }
+      },
+      robots: {
+        favor: {
+          intro:
+            "Defenderé que permitir robots en competiciones deportivas humanas puede ser positivo, si se diseña bien. La presencia de robots obligaría a replantear reglas, seguridad y valores del deporte, pero también puede impulsar la innovación y el interés por la ciencia y la tecnología entre el alumnado.",
+          ref1:
+            "Has mencionado que la competición dejaría de ser “humana”, pero se pueden crear categorías mixtas o pruebas específicas en las que el factor humano siga siendo central. Por ejemplo, competiciones en las que equipos de personas programan y controlan robots, de modo que la estrategia y el ingenio humanos sigan siendo decisivos.",
+          ref2:
+            "También puede decirse que los robots “ganarían siempre”, pero eso solo ocurriría si se les dejara competir sin límites. Del mismo modo que hay categorías por edad o por peso, se pueden fijar restricciones técnicas para que el reto siga siendo equilibrado. El objetivo no es humillar al ser humano, sino aprender a convivir con una tecnología cada vez más presente.",
+          cierre:
+            "En definitiva, abrir espacio a los robots en el deporte, con normas claras, puede ser una forma poderosa de educar en tecnología, ética y cooperación. No se trata de sustituir al deportista humano, sino de crear nuevos formatos donde la creatividad humana y la innovación se refuercen mutuamente."
+        },
+        contra: {
+          intro:
+            "Defenderé que los robots no deberían participar en competiciones deportivas humanas. El deporte, tal y como lo entendemos, se basa en el esfuerzo físico y mental de personas reales, con limitaciones, emociones y errores. Introducir robots cambia la esencia del juego.",
+          ref1:
+            "Se suele decir que los robots podrían motivar a aprender tecnología, pero el deporte ya cumple un papel educativo sin necesidad de máquinas competidoras. Enseña trabajo en equipo, respeto al rival, superación personal. Convertir el deporte en un escaparate de ingeniería corre el riesgo de desplazar el foco hacia la máquina y no hacia la persona.",
+          ref2:
+            "Además, incluso aunque hubiera categorías separadas, la comparación visual entre robots y personas sería inevitable. Puede generar frustración ver cómo una máquina salta más alto, corre más rápido o nunca se lesiona. El mensaje simbólico sería peligroso: parecería que, frente a la tecnología, el cuerpo humano siempre pierde.",
+          cierre:
+            "Por todo ello, es preferible reservar las competiciones deportivas para los seres humanos, y crear otros espacios específicos para robots, como ferias tecnológicas o competiciones de robótica. Así, protegemos la identidad del deporte como actividad profundamente humana."
+        }
+      },
+      tareas: {
+        favor: {
+          intro:
+            "Defenderé que crear una asignatura para aprender tareas cotidianas es una buena idea. Muchos estudiantes llegan a la vida adulta sin saber realizar gestiones básicas, cuidar su entorno o manejar un presupuesto. La escuela no solo debe transmitir contenidos académicos, sino preparar para la vida real.",
+          ref1:
+            "Has señalado que estas cosas se pueden aprender en casa, pero la realidad es que no todas las familias tienen el tiempo, los recursos o los conocimientos necesarios. La escuela puede equilibrar oportunidades: enseñar a cocinar de forma saludable, reciclar, organizar el estudio o entender una factura ayuda especialmente a quienes menos apoyo tienen fuera del aula.",
+          ref2:
+            "También se podría pensar que ya no hay espacio en el horario, pero precisamente integrar tareas cotidianas permite trabajar competencias clave de forma práctica: expresión oral, lectura comprensiva, cálculo, trabajo en equipo. Un proyecto de presupuesto familiar, por ejemplo, combina matemáticas, lengua y educación en valores.",
+          cierre:
+            "En resumen, una asignatura de tareas cotidianas no es un relleno, sino una apuesta por una formación integral. El alumnado se entrenaría en habilidades que usará todos los días, lo que puede aumentar su autonomía, su autoestima y su sensación de que lo aprendido en el aula tiene sentido."
+        },
+        contra: {
+          intro:
+            "Defenderé que no es necesario crear una asignatura específica para tareas cotidianas. El horario escolar ya está muy cargado y abrir una materia nueva implica restar tiempo a otras áreas fundamentales como las lenguas, las ciencias o las artes.",
+          ref1:
+            "Has insistido en que no todas las familias enseñan estas tareas, pero la escuela ya puede abordar muchos de esos contenidos desde tutoría, proyectos o actividades puntuales sin convertirlos en una asignatura más. Si todo se transforma en una materia evaluable, corremos el riesgo de burocratizar incluso lo más básico de la vida diaria.",
+          ref2:
+            "Además, la escuela no puede sustituir por completo el papel educativo de la familia. Si se escolarizan también las tareas cotidianas, el mensaje puede ser que la responsabilidad de educar recae solo en el centro. Es más razonable que el colegio ofrezca orientaciones y recursos, pero que las familias sigan implicadas en enseñar a vivir el día a día.",
+          cierre:
+            "Por estas razones, parece más equilibrado integrar las tareas cotidianas en proyectos transversales y en la acción tutorial, sin crear una asignatura nueva. Así se evita saturar el horario y se mantiene un reparto más realista de responsabilidades entre la escuela y la familia."
+        }
+      }
+    };
+
+
+    // --- Estado de la práctica ---
+    const state = {
+      topicKey: null,
+      studentSide: "favor",
+      appSide: "contra",
+      difficulty: "medio",
+      currentStep: 0,   // 0 = sin iniciar
+      totalSteps: 6,    // 1: intro app, 2: alumno, 3: ref1, 4: alumno, 5: ref2, 6: cierre
+      customTopic: null
+    };
+
+
+    // --- Referencias DOM ---
+    const studentNameInput = document.getElementById("studentName");
+    const topicSelect = document.getElementById("topicSelect");
+    const addCustomTopicBtn = document.getElementById("addCustomTopicBtn");
+    const randomTopicBtn = document.getElementById("randomTopicBtn");
+    const difficultySelect = document.getElementById("difficultySelect");
+    const startDebateBtn = document.getElementById("startDebateBtn");
+    const resetConfigBtn = document.getElementById("resetConfigBtn");
+    const configError = document.getElementById("configError");
+
+
+    const topicTextEl = document.getElementById("topicText");
+    const roleSummaryEl = document.getElementById("roleSummary");
+    const stepLabelEl = document.getElementById("stepLabel");
+    const turnIndexEl = document.getElementById("turnIndex");
+    const turnTotalEl = document.getElementById("turnTotal");
+    const bubbleApp = document.getElementById("bubbleApp");
+    const bubbleTitle = document.getElementById("bubbleTitle");
+    const bubbleText = document.getElementById("bubbleText");
+    const promptStudent = document.getElementById("promptStudent");
+    const promptStudentText = document.getElementById("promptStudentText");
+    const nextStepBtn = document.getElementById("nextStepBtn");
+    const restartDebateBtn = document.getElementById("restartDebateBtn");
+    const statusPill = document.getElementById("statusPill");
+    const statusDetail = document.getElementById("statusDetail");
+
+
+    // --- Utilidades ---
+    function getStudentSide() {
+      const checked = document.querySelector('input[name="studentSide"]:checked');
+      return checked ? checked.value : "favor";
+    }
+
+
+    function updateAppSide() {
+      state.studentSide = getStudentSide();
+      state.appSide = state.studentSide === "favor" ? "contra" : "favor";
+    }
+
+
+    function updateTopicText() {
+      if (state.customTopic) {
+        topicTextEl.textContent = state.customTopic;
+      } else if (TOPICS_TEXT[state.topicKey]) {
+        topicTextEl.textContent = TOPICS_TEXT[state.topicKey];
+      } else {
+        topicTextEl.textContent = "Selecciona o crea un tema para comenzar.";
+      }
+    }
+
+
+    function setStatus(text, mode) {
+      statusPill.textContent = text;
+      statusPill.className = "status-pill";
+      if (mode === "app") statusPill.classList.add("app");
+      if (mode === "student") statusPill.classList.add("student");
+      if (mode === "end") statusPill.classList.add("end");
+    }
+
+
+    function buildRoleSummary() {
+      roleSummaryEl.innerHTML = "";
+      const studentName = studentNameInput.value.trim() || "Alumno/a";
+      const studentSideText =
+        state.studentSide === "favor" ? "A favor del tema" : "En contra del tema";
+      const appSideText =
+        state.appSide === "favor" ? "A favor del tema" : "En contra del tema";
+
+
+      const chipStudent = document.createElement("span");
+      chipStudent.className = "chip chip-student";
+      chipStudent.textContent = `${studentName} (${studentSideText})`;
+
+
+      const chipApp = document.createElement("span");
+      chipApp.className = "chip chip-app";
+      chipApp.textContent = `Aplicación (${appSideText})`;
+
+
+      const chipSideStudent = document.createElement("span");
+      chipSideStudent.className =
+        "chip " + (state.studentSide === "favor" ? "chip-side-favor" : "chip-side-contra");
+      chipSideStudent.textContent =
+        state.studentSide === "favor" ? "Alumno: A favor" : "Alumno: En contra";
+
+
+      const chipSideApp = document.createElement("span");
+      chipSideApp.className =
+        "chip " + (state.appSide === "favor" ? "chip-side-favor" : "chip-side-contra");
+      chipSideApp.textContent =
+        state.appSide === "favor" ? "App: A favor" : "App: En contra";
+
+
+      roleSummaryEl.appendChild(chipStudent);
+      roleSummaryEl.appendChild(chipApp);
+      roleSummaryEl.appendChild(chipSideStudent);
+      roleSummaryEl.appendChild(chipSideApp);
+    }
+
+
+    // Ajuste de longitud según dificultad (recorte simple)
+    function adaptDifficulty(text, difficulty) {
+      if (difficulty === "facil") {
+        const sentences = text.split(".").map(s => s.trim()).filter(Boolean);
+        return sentences.slice(0, 1).join(". ") + (sentences.length ? "." : "");
+      }
+      if (difficulty === "medio") {
+        const sentences = text.split(".").map(s => s.trim()).filter(Boolean);
+        return sentences.slice(0, 2).join(". ") + (sentences.length ? "." : "");
+      }
+      // avanzado: texto completo
+      return text;
+    }
+
+
+    function getAppArgument(stepNumber) {
+      const topicKey = state.topicKey;
+      const side = state.appSide; // favor o contra
+      const diff = state.difficulty;
+
+
+      if (!ARGUMENTS_BASE[topicKey] || !ARGUMENTS_BASE[topicKey][side]) {
+        return "No se han encontrado argumentos para este tema.";
+      }
+
+
+      let rawText = "";
+      if (stepNumber === 1) rawText = ARGUMENTS_BASE[topicKey][side].intro;
+      if (stepNumber === 3) rawText = ARGUMENTS_BASE[topicKey][side].ref1;
+      if (stepNumber === 5) rawText = ARGUMENTS_BASE[topicKey][side].ref2;
+      if (stepNumber === 6) rawText = ARGUMENTS_BASE[topicKey][side].cierre;
+
+
+      return adaptDifficulty(rawText, diff);
+    }
+
+
+    function getStepLabel(stepNumber) {
+      switch (stepNumber) {
+        case 1: return "Introducción de la app";
+        case 2: return "Respuesta del alumno (1)";
+        case 3: return "Refutación 1 de la app";
+        case 4: return "Respuesta del alumno (2)";
+        case 5: return "Refutación 2 de la app";
+        case 6: return "Conclusión de la app";
+        default: return "—";
+      }
+    }
+
+
+    function updateViewForStep() {
+      const step = state.currentStep;
+      turnIndexEl.textContent = step;
+      turnTotalEl.textContent = state.totalSteps;
+      stepLabelEl.textContent = getStepLabel(step);
+
+
+      if (step === 0) {
+        bubbleApp.style.display = "none";
+        promptStudent.style.display = "none";
+        nextStepBtn.disabled = true;
+        restartDebateBtn.disabled = true;
+        setStatus("Sin iniciar", null);
+        statusDetail.textContent =
+          "Configura el tema, la postura del alumno y el nivel. Luego pulsa “Empezar práctica de debate”.";
+        return;
+      }
+
+
+      // Paso de la app
+      if ([1, 3, 5, 6].includes(step)) {
+        const titleMap = {
+          1: "Introducción de la aplicación",
+          3: "Refutación de la aplicación",
+          5: "Segunda refutación de la aplicación",
+          6: "Conclusión de la aplicación"
+        };
+        bubbleTitle.textContent = titleMap[step] || "Argumento de la aplicación";
+        bubbleText.textContent = getAppArgument(step);
+        bubbleApp.style.display = "block";
+
+
+        if (step === 6) {
+          // Cierre
+          promptStudent.style.display = "none";
+          nextStepBtn.textContent = "⏹️ Finalizar práctica";
+          nextStepBtn.disabled = false;
+          restartDebateBtn.disabled = false;
+          setStatus("Turno de la app", "app");
+          statusDetail.textContent =
+            "La aplicación presenta su conclusión final. Puedes comentar con el grupo o anotar feedback.";
+        } else {
+          promptStudent.style.display = "block";
+          promptStudentText.textContent =
+            "Lee con atención lo que ha dicho la aplicación. Después, responde en voz alta intentando rebatir o reforzar sus ideas. Cuando termines, pulsa “Siguiente paso”.";
+          nextStepBtn.textContent = "▶️ He respondido, continuar";
+          nextStepBtn.disabled = false;
+          restartDebateBtn.disabled = false;
+          setStatus("Turno de la app", "app");
+          statusDetail.textContent =
+            "La aplicación expone su argumento. A continuación, el alumno debe responder oralmente.";
+        }
+      }
+
+
+      // Paso del alumno
+      if ([2, 4].includes(step)) {
+        bubbleApp.style.display = "none";
+        promptStudent.style.display = "block";
+        const label =
+          step === 2 ? "Primera respuesta del alumno" : "Segunda respuesta del alumno";
+        stepLabelEl.textContent = label;
+
+
+        const instruction =
+          step === 2
+            ? "Responde a la introducción de la aplicación: presenta tus ideas principales y critica, si es posible, algún punto débil del argumento que has escuchado."
+            : "Responde a la refutación: defiende de nuevo tu postura, aporta ejemplos nuevos o reformula tus ideas para que resulten más convincentes.";
+        promptStudentText.textContent = instruction;
+
+
+        nextStepBtn.textContent = "▶️ He respondido, ver argumento de la app";
+        nextStepBtn.disabled = false;
+        restartDebateBtn.disabled = false;
+        setStatus("Turno del alumno", "student");
+        statusDetail.textContent =
+          "El alumno interviene en voz alta siguiendo las instrucciones de esta caja. Después pulsa el botón para continuar.";
+      }
+    }
+
+
+    // --- Gestión de pasos ---
+    nextStepBtn.addEventListener("click", () => {
+      if (state.currentStep === 0) return;
+
+
+      if (state.currentStep >= state.totalSteps) {
+        // Práctica finalizada
+        setStatus("Práctica finalizada", "end");
+        statusDetail.textContent =
+          "El mini debate ha terminado. Puedes comentar el resultado, tomar notas o repetir el mismo tema.";
+        nextStepBtn.disabled = true;
+        return;
+      }
+
+
+      state.currentStep += 1;
+      updateViewForStep();
+    });
+
+
+    restartDebateBtn.addEventListener("click", () => {
+      if (!state.topicKey && !state.customTopic) return;
+      state.currentStep = 1;
+      updateViewForStep();
+      setStatus("Reinicio del debate", "app");
+      statusDetail.textContent =
+        "Has reiniciado la práctica con el mismo tema y la misma postura. Vuelve a escuchar a la app y responde de nuevo.";
+    });
+
+
+    // --- Configuración y arranque ---
+    startDebateBtn.addEventListener("click", () => {
+      configError.style.display = "none";
+      configError.textContent = "";
+
+
+      try {
+        state.topicKey = topicSelect.value || "recreo";
+        state.difficulty = difficultySelect.value || "medio";
+        updateAppSide();
+        state.totalSteps = 6;
+        state.currentStep = 1;
+
+
+        updateTopicText();
+        buildRoleSummary();
+        updateViewForStep();
+
+
+        nextStepBtn.disabled = false;
+        restartDebateBtn.disabled = false;
+
+
+        setStatus("Turno de la app", "app");
+        statusDetail.textContent =
+          "La aplicación presenta su introducción. El alumno escuchará, luego responderá y seguirá la secuencia de pasos.";
+      } catch (err) {
+        configError.style.display = "block";
+        configError.textContent = err.message || "Error al iniciar el debate.";
+      }
+    });
+
+
+    // Añadir tema personalizado
+    addCustomTopicBtn.addEventListener("click", () => {
+      const newTopic = prompt(
+        "Escribe el nuevo tema del debate (frase completa):"
+      );
+      if (!newTopic || !newTopic.trim()) return;
+
+
+      const trimmed = newTopic.trim();
+      const customKey = "custom_" + Date.now();
+
+
+      TOPICS_TEXT[customKey] = trimmed;
+      const option = document.createElement("option");
+      option.value = customKey;
+      option.textContent = trimmed;
+      topicSelect.appendChild(option);
+
+
+      topicSelect.value = customKey;
+      state.topicKey = customKey;
+      state.customTopic = trimmed;
+      updateTopicText();
+    });
+
+
+    // Tema aleatorio
+    randomTopicBtn.addEventListener("click", () => {
+      const options = Array.from(topicSelect.options);
+      if (!options.length) return;
+      const idx = Math.floor(Math.random() * options.length);
+      topicSelect.selectedIndex = idx;
+      state.topicKey = topicSelect.value;
+      state.customTopic = null;
+      updateTopicText();
+    });
+
+
+    // Cambio de postura/dificultad actualiza estado (por si reinicias)
+    Array.from(document.querySelectorAll('input[name="studentSide"]')).forEach(
+      (radio) => {
+        radio.addEventListener("change", () => {
+          updateAppSide();
+          buildRoleSummary();
+        });
+      }
+    );
+
+
+    difficultySelect.addEventListener("change", () => {
+      state.difficulty = difficultySelect.value || "medio";
+      if (state.currentStep > 0) {
+        updateViewForStep();
+      }
+    });
+
+
+    // Reset total
+    resetConfigBtn.addEventListener("click", () => {
+      studentNameInput.value = "";
+      topicSelect.value = "recreo";
+      state.topicKey = "recreo";
+      state.customTopic = null;
+      updateAppSide();
+      difficultySelect.value = "medio";
+      state.difficulty = "medio";
+      state.currentStep = 0;
+      state.totalSteps = 6;
+      document.getElementById("notesArea").value = "";
+      updateTopicText();
+      roleSummaryEl.innerHTML = "";
+      updateViewForStep();
+      setStatus("Sin iniciar", null);
+      statusDetail.textContent =
+        "Configuración reiniciada. Elige tema, postura y nivel antes de empezar de nuevo.";
+      configError.style.display = "none";
+      configError.textContent = "";
+    });
+
+
+    // Estado inicial
+    state.topicKey = topicSelect.value || "recreo";
+    updateAppSide();
+    updateTopicText();
+    updateViewForStep();
+  </script>
+</body>
+</html>
